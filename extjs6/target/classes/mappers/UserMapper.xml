@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="ext6.mapper.UserMapper">
+
+	<!-- 插入用户数据 -->
+	<!-- Integer insert(User user) -->
+	<insert id="insert"
+		parameterType="ext6.entity.User"
+		useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO t_user (
+			username,
+			password,
+			sex,
+			age
+		) VALUES (
+			#{username},
+			#{password},
+			#{sex},
+			#{age}
+		)
+	</insert>
+	
+	<!-- 根据用户名查询用户数据 -->
+	<!-- User findUserByUsername(String username) -->
+	<select id="findUserByUsername"
+		resultType="ext6.entity.User">
+		SELECT 
+			id, username, password, sex, age
+		FROM 
+			t_user
+		WHERE 
+			username=#{username}
+	</select>
+	
+	<!-- 根据用户id查询用户数据 -->
+	<!-- User findUserById(Integer id) -->
+	<select id="findUserById"
+		resultType="ext6.entity.User">
+		SELECT 
+			username, password, sex,
+			age
+		FROM 
+			t_user
+		WHERE 
+			id=#{id}
+	</select>
+
+	<select id="findAll"
+			resultType="ext6.entity.User">
+		SELECT
+			id, username, password, sex, age
+		FROM
+			t_user
+	</select>
+
+	<select id="find"
+			resultType="ext6.entity.User">
+		SELECT
+			id, username, password, sex, age
+		FROM
+			t_user
+		WHERE
+			<if test="username != null">
+				username like "%"#{username}"%"
+                AND
+			</if>
+            <if test="sex != 3">
+                sex=#{sex}
+                AND
+            </if>
+            1=1
+	</select>
+
+	<delete id="deleteById">
+		DELETE FROM
+			t_user
+		WHERE
+			id=#{id}
+	</delete>
+</mapper>
+
+
+
+
+
