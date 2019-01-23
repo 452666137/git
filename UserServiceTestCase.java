@@ -42,7 +42,7 @@ public class UserServiceTestCase {
 		userService = ac.getBean("userService",
 				IUserService.class);
 	}
-ccccccc
+
 	@After
 	public void doAfter() {
 		ac.close();
