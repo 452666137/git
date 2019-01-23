@@ -1,3 +1,5 @@
 abcd
 123
 add func1
+add test1
+add test2
