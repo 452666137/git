@@ -1,0 +1,10 @@
+diff a/UserServiceTestCase.java b/UserServiceTestCase.java	(rejected hunks)
+@@ -42,7 +42,7 @@
+ 		userService = ac.getBean("userService",
+ 				IUserService.class);
+ 	}
+-
++ccccccc
+ 	@After
+ 	public void doAfter() {
+ 		ac.close();
